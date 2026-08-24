@@ -1,79 +1,79 @@
-# Versus Electoral Perú 2026
+<p align="center">
+  <b>🗳️ Versus Electoral Perú</b><br>
+  <sub>Monitorea noticias sobre los candidatos presidenciales del Perú y las clasifica por gravedad con IA.</sub>
+</p>
 
-Web en Next.js + Prisma que monitorea noticias sobre candidatos presidenciales del Perú y las clasifica por gravedad.
+<p align="center">
+  <img src="screenshot.png" alt="Versus Electoral Perú" width="600">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js_16-000000?style=flat&logo=next.js&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/Prisma-2D3748?style=flat&logo=prisma&logoColor=white" alt="Prisma">
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white" alt="OpenAI">
+  <img src="https://img.shields.io/badge/Three.js-000000?style=flat&logo=three.js&logoColor=white" alt="Three.js">
+  <img src="https://img.shields.io/badge/Deploy-Vercel-000000?style=flat&logo=vercel" alt="Vercel">
+</p>
+
+---
+
+## Qué hace
+
+Web en Next.js + Prisma que **monitorea noticias** sobre los candidatos presidenciales del Perú y las **clasifica por gravedad** usando IA (OpenAI/Anthropic). Hace scraping de fuentes, las procesa con un cron automático y las visualiza (incluye vistas 3D con Three.js).
+
+## Funcionalidades
+
+- Monitoreo y scraping de noticias sobre candidatos.
+- Clasificación por gravedad con IA.
+- Cron automático (Vercel cron + GitHub Actions, 2 ejecuciones diarias).
+- Ingesta de planes municipales y fotos de candidatos.
+- Visualización 3D (React Three Fiber).
+- Base de datos Prisma (Postgres en Supabase).
 
 ## Stack
-- Next.js 16 (App Router)
-- Prisma
-- TypeScript
-- TailwindCSS 4
 
-## Desarrollo local
-1. Instalar dependencias:
+| Capa | Stack |
+|------|-------|
+| Framework | Next.js 16 (App Router) |
+| ORM | Prisma |
+| Base de datos | Postgres (Supabase) |
+| IA | OpenAI / Anthropic |
+| Scraping | Cheerio + axios |
+| 3D | Three.js / React Three Fiber |
+
+## Uso local
+
 ```bash
 npm install
-```
-2. Configurar variables:
-```bash
 cp .env.example .env
-```
-3. Ejecutar migraciones localmente:
-```bash
 npm run db:migrate:dev
-```
-4. Seed de candidatos:
-```bash
 npm run db:seed
-```
-5. Levantar la app:
-```bash
 npm run dev
 ```
 
-## Producción con Supabase + Vercel
+## Variables de entorno
 
-### 1) Crear base Postgres en Supabase
-- Crea un proyecto en Supabase.
-- Copia la URL de conexión Postgres (pooler recomendado para serverless).
-
-### 2) Variables de entorno en Vercel
-Configura en `Project Settings -> Environment Variables`:
-- `DATABASE_URL`
-- `DIRECT_URL`
-- `CRON_SECRET`
-- `SCRAPE_API_KEY`
-- `OPENAI_API_KEY` (opcional)
-- `OPENAI_MODEL` (opcional, default: `gpt-4o-mini`)
-- `NEXT_PUBLIC_HOME_NEWS_COUNT` (opcional, contador estático mostrado en home)
-
-### 3) Aplicar migraciones a Supabase
-Con `DATABASE_URL` (pooler) y `DIRECT_URL` (directa) apuntando a Supabase:
-```bash
-npm run db:migrate:deploy
-npm run db:seed
-```
-
-### 4) Deploy en Vercel
-- Conecta el repositorio.
-- Vercel ejecutará `npm run build`.
+| Variable | Uso |
+|----------|-----|
+| `DATABASE_URL` | Conexión Postgres (pooler para serverless) |
+| `DIRECT_URL` | Conexión directa para migraciones |
+| `CRON_SECRET` | Protege el endpoint `/api/cron` |
+| `SCRAPE_API_KEY` | Protege `/api/scrape` |
+| `OPENAI_API_KEY` / `OPENAI_MODEL` | Clasificación con IA (opcional) |
 
 ## Cron automático
-El cron está configurado en `vercel.json`:
-- `path`: `/api/cron`
-- `schedule`: `0 5 * * *` (equivale a 00:00 en Perú, UTC-5)
 
-El endpoint `/api/cron` valida `Authorization: Bearer <CRON_SECRET>` en producción.
-
-Para mantener 2 ejecuciones diarias en plan Hobby:
-- Vercel ejecuta la corrida de `00:00` (UTC `05:00`)
-- GitHub Actions ejecuta la corrida de `12:00` (UTC `17:00`) con `.github/workflows/cron-midday.yml`
-
-Configura en GitHub (Repository -> Settings -> Secrets and variables -> Actions):
-- `APP_URL` (ejemplo: `https://tu-app.vercel.app`)
-- `CRON_SECRET` (el mismo valor usado en Vercel)
+Configurado en `vercel.json` (`/api/cron`, `0 5 * * *`). El endpoint valida `Authorization: Bearer <CRON_SECRET>`. Para 2 corridas diarias en plan Hobby se complementa con `.github/workflows/cron-midday.yml`.
 
 ## Scripts útiles
-- `npm run scrape`: dispara scraping manual local vía `/api/scrape`
-- `npm run cron`: ejecuta scraping local por script
-- `npm run db:migrate:deploy`: aplica migraciones en producción
-- `npm run db:seed`: inserta/actualiza candidatos base
+
+```bash
+npm run scrape            # scraping manual vía /api/scrape
+npm run cron              # scraping local por script
+npm run db:migrate:deploy # migraciones en producción
+npm run db:seed           # seed de candidatos
+```
+
+---
+
+<p align="center"><sub>Hecho con ❤️ por <a href="https://github.com/anthoniriv">Anthoni Rivera</a></sub></p>
