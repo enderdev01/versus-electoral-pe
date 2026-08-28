@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 
-export const revalidate = 60;
+// Ruta dinámica por searchParams: el cacheo va por CDN, no por ISR.
+const CACHE = "public, s-maxage=1800, stale-while-revalidate=86400";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -33,12 +34,15 @@ export async function GET(request: NextRequest) {
       prisma.noticia.count({ where }),
     ]);
 
-    return NextResponse.json({
-      noticias,
-      total,
-      page,
-      totalPages: Math.ceil(total / limit),
-    });
+    return NextResponse.json(
+      {
+        noticias,
+        total,
+        page,
+        totalPages: Math.ceil(total / limit),
+      },
+      { headers: { "Cache-Control": CACHE } }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Error interno" },
