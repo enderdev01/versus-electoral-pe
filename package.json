@@ -8,6 +8,7 @@
     "gen:fotos-manifest": "npx tsx scripts/gen-fotos-manifest.ts",
     "start": "next start",
     "lint": "eslint",
+    "check:isr": "npx tsx scripts/check-isr-budget.ts",
     "db:push": "npx prisma db push",
     "db:migrate:dev": "npx prisma migrate dev",
     "db:migrate:deploy": "npx prisma migrate deploy",
