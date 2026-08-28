@@ -246,7 +246,7 @@ export function Velocimetro({ gravedad, totalNoticias, animate = true }: Velocim
  * arc where left=danger for C1, right=danger for C2, green in center.
  */
 export function VelocimetroVersus({
-  leftGravedad, rightGravedad, leftNombre, rightNombre,
+  leftGravedad, rightGravedad,
   leftNoticias, rightNoticias, animate = true, onFinish,
 }: VelocimetroVersusProps) {
   const leftScore = GRAVEDAD_SCORE[leftGravedad];

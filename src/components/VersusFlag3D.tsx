@@ -167,6 +167,18 @@ function LogoCoin({
   );
 }
 
+// Deterministic PRNG: particle positions must stay stable across re-renders,
+// so the layout cannot depend on Math.random during render.
+function createRandom(seed: number) {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = Math.imul(state ^ (state >>> 15), 1 | state);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 function Particles({ color }: { color: string }) {
   const ref = useRef<THREE.Points>(null);
   const { viewport } = useThree();
@@ -175,10 +187,11 @@ function Particles({ color }: { color: string }) {
     const w = Math.max(8, viewport.width * 1.4);
     const h = Math.max(8, viewport.height * 1.4);
     const arr = new Float32Array(n * 3);
+    const random = createRandom(0x9e3779b9);
     for (let i = 0; i < n; i++) {
-      arr[i * 3] = (Math.random() - 0.5) * w;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * h;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 3;
+      arr[i * 3] = (random() - 0.5) * w;
+      arr[i * 3 + 1] = (random() - 0.5) * h;
+      arr[i * 3 + 2] = (random() - 0.5) * 3;
     }
     return { positions: arr, count: n };
   }, [viewport.width, viewport.height]);

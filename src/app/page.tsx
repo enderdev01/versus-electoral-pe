@@ -118,7 +118,9 @@ export default async function Home() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative">
-                <div className="text-4xl mb-3 flex justify-center"><img src="/ic_versus.svg" alt="" className="w-9 h-9" style={{ filter: "brightness(0) invert(1)" }} /></div>
+                <div className="text-4xl mb-3 flex justify-center">{/* Static inline SVG icon: next/image adds no value and the optimizer skips SVG. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/ic_versus.svg" alt="" className="w-9 h-9" style={{ filter: "brightness(0) invert(1)" }} /></div>
                 <h2 className="text-lg sm:text-xl font-black text-white uppercase tracking-wider">Versus</h2>
                 <p className="mt-2 text-sm text-gray-400 leading-relaxed">
                   Compara candidatos de la misma alcaldía, sus propuestas y noticias
@@ -136,7 +138,9 @@ export default async function Home() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="relative">
-                <div className="text-4xl mb-3 flex justify-center"><img src="/ic_candidate.svg" alt="" className="w-9 h-9" style={{ filter: "brightness(0) invert(1)" }} /></div>
+                <div className="text-4xl mb-3 flex justify-center">{/* Static inline SVG icon: next/image adds no value and the optimizer skips SVG. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/ic_candidate.svg" alt="" className="w-9 h-9" style={{ filter: "brightness(0) invert(1)" }} /></div>
                 <h2 className="text-lg sm:text-xl font-black text-white uppercase tracking-wider">Candidatos</h2>
                 <p className="mt-2 text-sm text-gray-400 leading-relaxed">
                   Explora Lima Metropolitana y sus 42 alcaldías distritales
