@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { CANDIDATOS, GRAVEDAD, type GravedadKey } from "@/lib/candidatos";
+import { CANDIDATOS, type GravedadKey } from "@/lib/candidatos";
 import { CandidatoDetalleClient } from "@/components/CandidatoDetalleClient";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 

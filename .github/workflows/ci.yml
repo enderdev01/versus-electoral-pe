@@ -9,11 +9,11 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -25,12 +25,8 @@ jobs:
       - name: Typecheck
         run: npx tsc --noEmit
 
-      # No bloqueante: el repo arrastra 4 errores de react-hooks en los
-      # componentes 3D, previos a este workflow. Se ven en el log, pero no
-      # deberían frenar PRs que no los tocan.
       - name: Lint
         run: npm run lint
-        continue-on-error: true
 
       # Corre sobre el código fuente, sin build ni base de datos: atrapa un
       # revalidate corto antes de que llegue a producción y queme la cuota.

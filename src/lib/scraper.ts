@@ -151,7 +151,7 @@ function esVideo(url: string, titulo: string, descripcion: string): boolean {
 
 // Intentar extraer fecha de publicación del HTML de un artículo
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function extraerFechaHTML($el: cheerio.Cheerio<any>, $: cheerio.CheerioAPI): Date | null {
+function extraerFechaHTML($el: cheerio.Cheerio<any>): Date | null {
   // 1. Buscar <time datetime="">
   const timeEl = $el.find("time[datetime]").first();
   if (timeEl.length) {
@@ -258,7 +258,7 @@ function extraerNoticiasHTML(
     }
 
     // Extraer fecha de publicación
-    const fechaPublicacion = extraerFechaHTML($el, $);
+    const fechaPublicacion = extraerFechaHTML($el);
 
     if (titulo && titulo.length > 15 && url && !esExcluida(url) && !esVideo(url, titulo, descripcion)) {
       noticias.push({ titulo, descripcion: descripcion.slice(0, 500), url, fuente, fechaPublicacion });

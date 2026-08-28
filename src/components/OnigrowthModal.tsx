@@ -3,24 +3,26 @@
 import { useState, useEffect } from "react";
 
 export function OnigrowthModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  // Mount the content only while open so its animation state resets on close
+  // instead of being reset from inside an effect.
+  if (!open) return null;
+  return <OnigrowthModalContent onClose={onClose} />;
+}
+
+function OnigrowthModalContent({ onClose }: { onClose: () => void }) {
   const [show, setShow] = useState(false);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      requestAnimationFrame(() => setShow(true));
-      const t = setTimeout(() => setShowContent(true), 100);
-      return () => clearTimeout(t);
-    } else {
-      setShowContent(false);
-      setShow(false);
+    document.body.style.overflow = "hidden";
+    const frame = requestAnimationFrame(() => setShow(true));
+    const t = setTimeout(() => setShowContent(true), 100);
+    return () => {
+      cancelAnimationFrame(frame);
+      clearTimeout(t);
       document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  if (!open) return null;
+    };
+  }, []);
 
   function handleClose() {
     setShowContent(false);
