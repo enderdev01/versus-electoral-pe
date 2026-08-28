@@ -12,7 +12,9 @@ import {
 } from "@/lib/municipales";
 import { SinDatosEleccion } from "@/components/SinDatosEleccion";
 
-export const revalidate = 1800;
+// El cron invalida estas rutas con revalidatePath cuando el scraping trae algo
+// nuevo. Este TTL es solo la red de seguridad por si esa invalidación no corre.
+export const revalidate = 86400;
 
 const ELECCION = getEleccion("municipal-2026");
 
