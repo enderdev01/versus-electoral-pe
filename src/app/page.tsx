@@ -4,7 +4,9 @@ import { FaqAccordion } from "@/components/FaqAccordion";
 import { CANDIDATOS_MUNICIPALES, distritosConCandidatos } from "@/lib/municipales";
 import { METADATA_PLANES } from "@/lib/planes-gobierno";
 
-export const revalidate = 1800;
+// El cron invalida estas rutas con revalidatePath cuando el scraping trae algo
+// nuevo. Este TTL es solo la red de seguridad por si esa invalidación no corre.
+export const revalidate = 86400;
 
 const HOME_STATS_BASE = {
   candidatos: CANDIDATOS_MUNICIPALES.length,

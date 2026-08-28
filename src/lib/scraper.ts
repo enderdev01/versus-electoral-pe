@@ -806,10 +806,12 @@ function delay(ms: number) {
 
 export async function ejecutarScraping(
   options: ScrapingOptions = {}
-): Promise<{ total: number; nuevas: number; errores: string[] }> {
+): Promise<{ total: number; nuevas: number; errores: string[]; actualizados: string[] }> {
   const startedAt = Date.now();
   const errores: string[] = [];
   let nuevasGuardadas = 0; // filas realmente creadas
+  // Slugs con noticias nuevas: el cron los usa para invalidar solo esas rutas.
+  const actualizados = new Set<string>();
 
   const historico = options.desde && options.hasta
     ? { desde: options.desde, hasta: options.hasta }
@@ -1018,6 +1020,7 @@ export async function ejecutarScraping(
         },
       });
       nuevasGuardadas++;
+      actualizados.add(candidato.slug);
     } catch (e) {
       // Si otra ejecución insertó la URL en paralelo, ignorar el conflicto único.
       if (e instanceof Error && !e.message.includes("Unique constraint")) {
@@ -1051,5 +1054,10 @@ export async function ejecutarScraping(
     },
   });
 
-  return { total: totalEncontradas, nuevas: nuevasGuardadas, errores: errores.slice(0, 20) };
+  return {
+    total: totalEncontradas,
+    nuevas: nuevasGuardadas,
+    errores: errores.slice(0, 20),
+    actualizados: [...actualizados],
+  };
 }

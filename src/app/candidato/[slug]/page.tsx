@@ -5,7 +5,9 @@ import { CANDIDATOS, GRAVEDAD, type GravedadKey } from "@/lib/candidatos";
 import { CandidatoDetalleClient } from "@/components/CandidatoDetalleClient";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
-export const revalidate = 1800;
+// El cron invalida estas rutas con revalidatePath cuando el scraping trae algo
+// nuevo. Este TTL es solo la red de seguridad por si esa invalidación no corre.
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return CANDIDATOS.map((c) => ({ slug: c.slug }));

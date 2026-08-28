@@ -3,6 +3,7 @@ import { ejecutarScraping } from "@/lib/scraper";
 import { prisma } from "@/lib/db";
 import { AMBITO_PROVINCIAL, distritosConCandidatos } from "@/lib/municipales";
 import { ELECCIONES, type EleccionId } from "@/lib/elecciones";
+import { revalidarCandidatos } from "@/lib/revalidar";
 
 export const maxDuration = 300;
 
@@ -58,10 +59,20 @@ export async function GET(request: Request) {
     const results = historico
       ? await ejecutarHistorico()
       : await ejecutarScraping(eleccion ? { eleccion } : {});
+
+    // Las páginas tienen un revalidate diario como red de seguridad; acá
+    // invalidamos al instante solo las rutas de los candidatos que cambiaron,
+    // en lugar de dejar que cada crawler dispare una escritura de ISR.
+    const actualizados = "actualizados" in results
+      ? results.actualizados
+      : results.results.actualizados;
+    const revalidadas = revalidarCandidatos(actualizados);
+
     return NextResponse.json({
       success: true,
       timestamp: new Date().toISOString(),
       results,
+      revalidadas,
     });
   } catch (error) {
     console.error("Cron scraping error:", error);

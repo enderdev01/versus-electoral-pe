@@ -3,7 +3,9 @@ import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { CandidatosList } from "@/components/CandidatosList";
 import { obtenerResumenCandidatos } from "@/lib/candidatos-resumen";
 
-export const revalidate = 1800;
+// El cron invalida estas rutas con revalidatePath cuando el scraping trae algo
+// nuevo. Este TTL es solo la red de seguridad por si esa invalidación no corre.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Todos los Candidatos Presidenciales 2026",
