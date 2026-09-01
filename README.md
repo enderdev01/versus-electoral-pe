@@ -1,6 +1,18 @@
 <p align="center">
-  <b>🗳️ Versus Electoral Perú</b><br>
-  <sub>Compara candidaturas municipales de Lima 2026, sus propuestas oficiales y noticias de fuentes periodísticas.</sub>
+  <img src="assets/banner.svg" alt="Versus Electoral — candidaturas, propuestas y noticias de Lima" width="100%">
+</p>
+
+<p align="center">
+  <b>Compará candidaturas municipales de Lima, sus propuestas y las noticias que las rodean.</b><br>
+  <sub>Información pública, fuentes originales y clasificación asistida por IA para comparar con más contexto.</sub>
+</p>
+
+<p align="center">
+  <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js_16-000000?style=flat-square&logo=next.js&logoColor=white">
+  <img alt="Prisma" src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white">
+  <img alt="OpenAI" src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white">
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white">
+  <img alt="Vercel" src="https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white">
 </p>
 
 <p align="center">
@@ -9,7 +21,7 @@
 
 ---
 
-## Qué resuelve
+## Qué hace
 
 **Versus Electoral Perú** concentra la comparación de candidatos a las alcaldías de Lima, sus planes de gobierno y la cobertura periodística asociada. Ayuda a revisar información pública con contexto y a llegar siempre a la fuente original.
 
