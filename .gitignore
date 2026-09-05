@@ -48,3 +48,7 @@ next-env.d.ts
 /.agents/
 /.claude/skills/
 /skills-lock.json
+
+# indices de herramientas locales (se regeneran, dependen de la ruta del checkout)
+/.codegraph/
+/.atl/
