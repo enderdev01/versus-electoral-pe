@@ -600,16 +600,29 @@ async function buscarCandidatoGoogleNews(
 
   if (candidato.eleccion === "municipal-2026") {
     const ambito = nombreAmbito(candidato);
+    // Los titulares usan la forma corta ("Carlos Bruce"), no el nombre legal del
+    // JNE ni la variante de apellidos de keywords[0]. Buscar solo esas dos dejaba
+    // a los municipales sin noticias nuevas aunque el cron corriera al día.
+    const alias = [
+      ...new Set(candidato.keywords.filter((k) => k && k !== candidato.nombre)),
+    ].slice(0, 2);
     consultas = rangoHistorico
       ? [
           `"${candidato.nombre}" (alcalde OR municipalidad OR candidatura OR elecciones OR ${termsLegales}) "${ambito}"`,
-          `"${candidato.keywords[0]}" (alcalde OR municipalidad OR política OR ${termsLegales}) ("${ambito}" OR Lima)`,
+          ...alias.map(
+            (termino) =>
+              `"${termino}" (alcalde OR municipalidad OR política OR ${termsLegales}) ("${ambito}" OR Lima)`
+          ),
         ]
       : [
-          `"${candidato.nombre}" (${termsLegales}) (alcalde OR municipalidad OR "${ambito}") (${SITES_PERU})`,
+          // Se quitó la variante `nombre + términos legales + sites`: sobrerrestringida,
+          // devolvía 0 resultados en toda la muestra y solo gastaba presupuesto de Fase 2.
           `"${candidato.nombre}" (alcalde OR candidatura OR "elecciones municipales") "${ambito}" (${SITES_PERU})`,
-          ...(candidato.keywords[0] && candidato.keywords[0] !== candidato.nombre
-            ? [`"${candidato.keywords[0]}" (alcalde OR municipalidad OR "${ambito}") (${termsLegales})`]
+          ...alias.map(
+            (termino) => `"${termino}" (alcalde OR candidatura OR elecciones) (${SITES_PERU})`
+          ),
+          ...(alias[0]
+            ? [`"${alias[0]}" (alcalde OR municipalidad OR "${ambito}") (${termsLegales})`]
             : []),
         ];
   } else {
