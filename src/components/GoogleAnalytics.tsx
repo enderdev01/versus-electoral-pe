@@ -2,25 +2,26 @@
 
 import Script from "next/script";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { SITE_URL } from "@/lib/site";
+import {
+  createAnalyticsInitScript,
+  createPageViewTracker,
+} from "@/lib/analytics";
 
 const GA_ID = "G-PNX1K630F1";
 
-declare global {
-  interface Window {
-    gtag: (...args: unknown[]) => void;
-    dataLayer: unknown[];
-  }
-}
-
 export function GoogleAnalytics() {
   const pathname = usePathname();
+  const [isReady, setIsReady] = useState(false);
+  const pageViewTracker = useRef<ReturnType<typeof createPageViewTracker>>(null);
+  const initScript = createAnalyticsInitScript(GA_ID, pathname, SITE_URL);
 
   useEffect(() => {
-    if (typeof window.gtag === "function") {
-      window.gtag("config", GA_ID, { page_path: pathname });
-    }
-  }, [pathname]);
+    if (!isReady || typeof window.gtag !== "function") return;
+    pageViewTracker.current ??= createPageViewTracker(window.gtag, SITE_URL);
+    pageViewTracker.current(pathname);
+  }, [isReady, pathname]);
 
   return (
     <>
@@ -28,21 +29,13 @@ export function GoogleAnalytics() {
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
       />
-      <Script id="ga-init" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_ID}');
-        `}
+      <Script
+        id="ga-init"
+        strategy="afterInteractive"
+        onReady={() => setIsReady(true)}
+      >
+        {initScript}
       </Script>
     </>
   );
-}
-
-// Helper to send custom events
-export function trackEvent(eventName: string, params?: Record<string, string | number>) {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
-  }
 }
