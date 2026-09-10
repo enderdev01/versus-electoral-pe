@@ -28,6 +28,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Site URL guard
+        run: npm run check:site-url
+
       # Corre sobre el código fuente, sin build ni base de datos: atrapa un
       # revalidate corto antes de que llegue a producción y queme la cuota.
       - name: ISR budget
