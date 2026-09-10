@@ -59,10 +59,16 @@ test("custom events allow only approved names and fields", () => {
   const calls: unknown[][] = [];
   const gtag = (...args: unknown[]) => calls.push(args);
   const input = {
-    pathname: "/alcaldes/versus",
+    pathname: "/alcaldes/versus?ambito=ate&prioridad=SOCIAL",
     siteOrigin: ORIGIN,
     candidate_slug: "must-not-leak",
-  } as AnalyticsEventInput & { candidate_slug: string };
+    district: "ate",
+    priority: "SOCIAL",
+  } as AnalyticsEventInput & {
+    candidate_slug: string;
+    district: string;
+    priority: string;
+  };
   assert.equal(dispatchAnalyticsEvent(gtag, ANALYTICS_EVENTS.comparisonStarted, input), true);
   assert.deepEqual(calls, [["event", "comparison_started", {
     page_path: "/alcaldes/versus",
@@ -71,7 +77,12 @@ test("custom events allow only approved names and fields", () => {
     page_referrer: "",
   }]]);
   assert.equal(dispatchAnalyticsEvent(gtag, "candidate_selected" as AnalyticsEventName, input), false);
-  assert.equal(/candidate_slug|must-not-leak/.test(JSON.stringify(calls)), false);
+  assert.equal(
+    /candidate_slug|must-not-leak|ambito=|prioridad=|district|priority/.test(
+      JSON.stringify(calls),
+    ),
+    false,
+  );
 });
 
 test("analytics failures never escape", () => {
