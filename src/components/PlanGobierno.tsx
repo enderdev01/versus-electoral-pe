@@ -10,9 +10,11 @@ const DIMENSIONES = [
 export function PlanGobierno({
   plan,
   compact = false,
+  initialDimension,
 }: {
   plan: PlanGobiernoView;
   compact?: boolean;
+  initialDimension?: string;
 }) {
   return (
     <div className={compact ? "space-y-4" : "space-y-6"}>
@@ -23,6 +25,7 @@ export function PlanGobierno({
         return (
           <details
             key={dimension.id}
+            open={dimension.id === initialDimension ? true : undefined}
             className={`group rounded-xl border ${dimension.border} bg-gray-900/30`}
           >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-3.5 py-3">

@@ -1,4 +1,5 @@
 import type { CandidatoData } from "./candidatos";
+import type { MunicipalEntryOption } from "./municipal-entry";
 import { CANDIDATOS_MUNICIPALES_DATA, CORTE_JNE } from "./municipales-data";
 
 // ─────────────────────────────────────────────────────────────
@@ -105,4 +106,27 @@ export const POSTULANTES_POR_AMBITO: Map<string, number> = CANDIDATOS_MUNICIPALE
 /** Distritos que ya tienen al menos una candidatura cargada. */
 export function distritosConCandidatos(): Distrito[] {
   return DISTRITOS_LIMA.filter((d) => POSTULANTES_POR_AMBITO.has(d.slug));
+}
+
+/** Opciones públicas del flujo municipal, incluido el caso especial del Cercado. */
+export function obtenerOpcionesMunicipales(): MunicipalEntryOption[] {
+  const provincialTotal = POSTULANTES_POR_AMBITO.get(AMBITO_PROVINCIAL) ?? 0;
+  return [
+    {
+      slug: AMBITO_PROVINCIAL,
+      nombre: "Lima Metropolitana",
+      total: provincialTotal,
+      description: "Alcaldía provincial de Lima",
+    },
+    ...DISTRITOS_LIMA.map((distrito) => ({
+      slug: distrito.slug,
+      nombre: distrito.nombre,
+      total: distrito.sinAlcaldiaPropia
+        ? provincialTotal
+        : (POSTULANTES_POR_AMBITO.get(distrito.slug) ?? 0),
+      description: distrito.sinAlcaldiaPropia
+        ? "El Cercado vota por la Alcaldía de Lima Metropolitana"
+        : undefined,
+    })),
+  ];
 }

@@ -6,6 +6,7 @@ import { MunicipalBanner } from "@/components/MunicipalBanner";
 import { FooterApoyanos } from "@/components/FooterApoyanos";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { EleccionSwitch } from "@/components/EleccionSwitch";
+import { isProductionAnalyticsEnvironment } from "@/lib/analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,6 +20,10 @@ const geistMono = Geist_Mono({
 });
 
 const TITLE = `${SITE_NAME} — Candidatos a Alcalde de Lima 2026`;
+const analyticsEnabled = isProductionAnalyticsEnvironment({
+  nodeEnv: process.env.NODE_ENV,
+  vercelEnv: process.env.VERCEL_ENV,
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -122,7 +127,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-950 text-white`}
       >
-        <GoogleAnalytics />
+        <a className="skip-link" href="#main-content">Saltar al contenido principal</a>
+        {analyticsEnabled ? <GoogleAnalytics /> : null}
         <header className="sticky top-0 z-50 border-b border-gray-800/80 bg-gray-950/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
             <Link prefetch={false} href="/" className="flex items-center gap-1.5 group shrink-0">
@@ -137,7 +143,7 @@ export default function RootLayout({
           </div>
         </header>
         <MunicipalBanner />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="border-t border-gray-800/80 bg-gray-950/80 backdrop-blur-md text-gray-600">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
             {/* Mobile: solo branding + apóyanos compacto */}

@@ -1,59 +1,81 @@
 "use client";
 
-import { useState } from "react";
-import {
-  AMBITO_PROVINCIAL,
-  DISTRITOS_LIMA,
-  POSTULANTES_POR_AMBITO,
-} from "@/lib/municipales";
-import { VersusSelector } from "./VersusSelector";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { MunicipalComparison } from "./MunicipalComparison";
+import { MunicipalEntry } from "./MunicipalEntry";
+import type { MunicipalEntryOption, MunicipalPriority } from "@/lib/municipal-entry";
 
-const AMBITOS = [
-  {
-    slug: AMBITO_PROVINCIAL,
-    nombre: "Lima Metropolitana",
-    total: POSTULANTES_POR_AMBITO.get(AMBITO_PROVINCIAL) ?? 0,
-  },
-  ...DISTRITOS_LIMA.filter(
-    (distrito) => !distrito.sinAlcaldiaPropia && POSTULANTES_POR_AMBITO.has(distrito.slug)
-  ).map((distrito) => ({
-    slug: distrito.slug,
-    nombre: distrito.nombre,
-    total: POSTULANTES_POR_AMBITO.get(distrito.slug) ?? 0,
-  })),
-];
+export interface VersusMunicipalProps {
+  ambito: string;
+  municipalityName: string;
+  rosterSlugs: string[];
+  options: MunicipalEntryOption[];
+  priority?: MunicipalPriority;
+  notice?: string;
+}
 
-export function VersusMunicipal() {
-  const [ambito, setAmbito] = useState(AMBITO_PROVINCIAL);
+/**
+ * Keeps the municipal flow independent from the presidential VersusSelector.
+ * The server has already validated the URL selection before this client boundary.
+ */
+export function VersusMunicipal({
+  ambito,
+  municipalityName,
+  rosterSlugs,
+  options,
+  priority,
+  notice,
+}: VersusMunicipalProps) {
+  const router = useRouter();
+  const [isChangingSelection, setIsChangingSelection] = useState(false);
+  const [normalizationNotice] = useState(notice);
+
+  useEffect(() => {
+    if (!notice) return;
+    const params = new URLSearchParams({ ambito });
+    if (priority) params.set("prioridad", priority);
+    router.replace(`/alcaldes/versus?${params.toString()}`);
+  }, [ambito, notice, priority, router]);
+
+  if (isChangingSelection) {
+    return (
+      <section className="mx-auto max-w-4xl px-4 py-8">
+        <MunicipalEntry
+          autoFocus
+          initialAmbito={ambito}
+          initialPriority={priority}
+          options={options}
+          resetHref="/alcaldes/versus"
+        />
+      </section>
+    );
+  }
 
   return (
     <>
-      <section className="border-b border-gray-800/70 bg-gray-950 px-4 py-5">
-        <div className="mx-auto max-w-xl">
-          <label
-            htmlFor="ambito-versus"
-            className="mb-2 block text-[11px] font-black uppercase tracking-[0.18em] text-red-400"
+      <section className="border-b border-gray-800/70 bg-gray-950 px-4 py-4">
+        <div className="mx-auto flex max-w-4xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-sm font-bold text-white">Municipalidad seleccionada: {municipalityName}</p>
+            {normalizationNotice ? <p role="status" className="mt-1 text-sm text-amber-200">{normalizationNotice}</p> : null}
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsChangingSelection(true)}
+            className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl border border-gray-600 px-4 py-2 text-sm font-bold text-gray-100 hover:border-gray-400 hover:bg-gray-900"
           >
-            Alcaldía a comparar
-          </label>
-          <select
-            id="ambito-versus"
-            value={ambito}
-            onChange={(event) => setAmbito(event.target.value)}
-            className="w-full rounded-xl border border-gray-700 bg-gray-900 px-4 py-3 text-sm font-bold text-white outline-none transition focus:border-red-500"
-          >
-            {AMBITOS.map((item) => (
-              <option key={item.slug} value={item.slug}>
-                {item.nombre} · {item.total} candidatos
-              </option>
-            ))}
-          </select>
-          <p className="mt-2 text-xs text-gray-500">
-            Solo se comparan postulantes que compiten por la misma municipalidad.
-          </p>
+            Cambiar municipalidad
+          </button>
         </div>
       </section>
-      <VersusSelector key={ambito} eleccion="municipal-2026" ambito={ambito} />
+      <MunicipalComparison
+        key={ambito}
+        ambito={ambito}
+        rosterSlugs={rosterSlugs}
+        municipalityName={municipalityName}
+        priority={priority}
+      />
     </>
   );
 }

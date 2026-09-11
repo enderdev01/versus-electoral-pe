@@ -7,7 +7,12 @@ import { GravedadBadge } from "./GravedadBadge";
 import { GRAVEDAD, type GravedadKey } from "@/lib/candidatos";
 import { normalize } from "@/lib/normalize";
 import type { EleccionId } from "@/lib/elecciones";
-import { trackEvent } from "./GoogleAnalytics";
+import { ANALYTICS_EVENTS, trackEvent } from "@/lib/analytics";
+import {
+  acceptComparison,
+  shouldApplyComparisonResult,
+  type ComparisonPair,
+} from "@/lib/comparison-flow";
 import { PlanGobierno } from "./PlanGobierno";
 import { CandidatoAvatar } from "./CandidatoAvatar";
 import type { PlanGobiernoView } from "@/lib/planes-gobierno";
@@ -387,11 +392,13 @@ export function VersusSelector({
   const [showResults, setShowResults] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [comparedLeft, setComparedLeft] = useState("");
-  const [comparedRight, setComparedRight] = useState("");
   const [comparisonKey, setComparisonKey] = useState(0);
   const selectorSectionRef = useRef<HTMLElement>(null);
   const resultsSectionRef = useRef<HTMLElement>(null);
+  const comparisonAttemptRef = useRef(0);
+  const readyComparisonRef = useRef<number | null>(null);
+  const completedComparisonRef = useRef<number | null>(null);
+  const acceptedComparisonRef = useRef<ComparisonPair | null>(null);
 
   useEffect(() => {
     const q = new URLSearchParams({ eleccion });
@@ -407,6 +414,15 @@ export function VersusSelector({
   const rightData = lista.find((c) => c.slug === right);
 
   const handleGaugeFinish = useCallback(() => {
+    const comparisonAttempt = readyComparisonRef.current;
+    if (
+      comparisonAttempt === null ||
+      completedComparisonRef.current === comparisonAttempt
+    ) {
+      return;
+    }
+    completedComparisonRef.current = comparisonAttempt;
+    trackEvent(ANALYTICS_EVENTS.comparisonCompleted);
     setLoading(false);
     setShowResults(true);
     // Show modal after a small delay
@@ -414,17 +430,13 @@ export function VersusSelector({
   }, []);
 
 
-  const startComparisonRef = useRef<(l: string, r: string) => Promise<void>>(undefined);
-  startComparisonRef.current = async (l: string, r: string) => {
-    if (!l || !r || l === r) return;
-    const leftName = lista.find((c) => c.slug === l)?.nombre || l;
-    const rightName = lista.find((c) => c.slug === r)?.nombre || r;
-    trackEvent("comparar_candidatos", {
-      candidato_1: leftName,
-      candidato_2: rightName,
-      candidato_1_slug: l,
-      candidato_2_slug: r,
-    });
+  const runComparison = useCallback(async (l: string, r: string) => {
+    const acceptance = acceptComparison(acceptedComparisonRef.current, l, r);
+    if (!acceptance.shouldStart) return;
+    acceptedComparisonRef.current = acceptance.pair;
+    const comparisonAttempt = ++comparisonAttemptRef.current;
+    readyComparisonRef.current = null;
+    trackEvent(ANALYTICS_EVENTS.comparisonStarted);
     setLoading(true);
     setComparing(true);
     setShowResults(false);
@@ -438,6 +450,15 @@ export function VersusSelector({
       fetch(`/api/propuestas?candidato=${r}`).then((r) => r.json()),
     ]);
 
+    if (
+      !shouldApplyComparisonResult(
+        comparisonAttempt,
+        comparisonAttemptRef.current,
+      )
+    ) {
+      return;
+    }
+
     const gravedadOrder = ["MUY_PELIGROSO", "PELIGROSO", "MODERADO", "LEVE", "LIMPIO"];
     const sortByGravedad = (a: NoticiaAPI, b: NoticiaAPI) =>
       gravedadOrder.indexOf(a.gravedad) - gravedadOrder.indexOf(b.gravedad);
@@ -446,24 +467,28 @@ export function VersusSelector({
     setRightNoticias((rRes.noticias || []).sort(sortByGravedad));
     setLeftPlan(lPlanRes.plan || null);
     setRightPlan(rPlanRes.plan || null);
-    setComparedLeft(l);
-    setComparedRight(r);
+    readyComparisonRef.current = comparisonAttempt;
     setComparisonKey((k) => k + 1);
-  };
+  }, []);
 
   async function startComparison() {
-    await startComparisonRef.current?.(left, right);
+    await runComparison(left, right);
   }
 
-  // Auto-compare when candidates change while in comparing mode
-  useEffect(() => {
-    if (comparing && left && right && left !== right && (left !== comparedLeft || right !== comparedRight)) {
-      startComparisonRef.current?.(left, right);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [left, right, comparing]);
+  const changeComparedLeft = useCallback((nextLeft: string) => {
+    setLeft(nextLeft);
+    void runComparison(nextLeft, right);
+  }, [right, runComparison]);
+
+  const changeComparedRight = useCallback((nextRight: string) => {
+    setRight(nextRight);
+    void runComparison(left, nextRight);
+  }, [left, runComparison]);
 
   function reset() {
+    acceptedComparisonRef.current = null;
+    comparisonAttemptRef.current += 1;
+    readyComparisonRef.current = null;
     setLeft("");
     setRight("");
     setComparing(false);
@@ -699,7 +724,7 @@ export function VersusSelector({
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1">Candidato 1</label>
                   <SearchableSelect
                     value={left}
-                    onChange={setLeft}
+                    onChange={changeComparedLeft}
                     options={lista}
                     disabledValue={right}
                     placeholder="Candidato..."
@@ -710,7 +735,7 @@ export function VersusSelector({
                   <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1">Candidato 2</label>
                   <SearchableSelect
                     value={right}
-                    onChange={setRight}
+                    onChange={changeComparedRight}
                     options={lista}
                     disabledValue={left}
                     placeholder="Candidato..."
@@ -794,7 +819,7 @@ export function VersusSelector({
                 <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1.5">Cambiar candidato 1</label>
                 <SearchableSelect
                   value={left}
-                  onChange={setLeft}
+                  onChange={changeComparedLeft}
                   options={lista}
                   disabledValue={right}
                   placeholder="Seleccionar candidato..."
@@ -810,7 +835,7 @@ export function VersusSelector({
                 <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1.5">Cambiar candidato 2</label>
                 <SearchableSelect
                   value={right}
-                  onChange={setRight}
+                  onChange={changeComparedRight}
                   options={lista}
                   disabledValue={left}
                   placeholder="Seleccionar candidato..."
