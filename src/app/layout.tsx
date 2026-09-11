@@ -127,6 +127,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-950 text-white`}
       >
+        <a className="skip-link" href="#main-content">Saltar al contenido principal</a>
         {analyticsEnabled ? <GoogleAnalytics /> : null}
         <header className="sticky top-0 z-50 border-b border-gray-800/80 bg-gray-950/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
@@ -142,7 +143,7 @@ export default function RootLayout({
           </div>
         </header>
         <MunicipalBanner />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="border-t border-gray-800/80 bg-gray-950/80 backdrop-blur-md text-gray-600">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8 sm:py-12">
             {/* Mobile: solo branding + apóyanos compacto */}
