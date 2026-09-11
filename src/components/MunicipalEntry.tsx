@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useTransition, type FormEvent } from "react";
+import { useEffect, useRef, useState, useTransition, type FormEvent } from "react";
 import {
   buildMunicipalComparisonUrl,
   MUNICIPAL_PRIORITIES,
@@ -15,6 +15,8 @@ export interface MunicipalEntryProps {
   initialAmbito?: string;
   initialPriority?: MunicipalPriority;
   error?: string;
+  resetHref?: string;
+  autoFocus?: boolean;
   onSubmit?: (selection: MunicipalEntrySelection) => void;
 }
 
@@ -23,9 +25,12 @@ export function MunicipalEntry({
   initialAmbito = "",
   initialPriority,
   error,
+  resetHref,
+  autoFocus = false,
   onSubmit,
 }: MunicipalEntryProps) {
   const router = useRouter();
+  const ambitoRef = useRef<HTMLSelectElement>(null);
   const [ambito, setAmbito] = useState(initialAmbito);
   const [prioridad, setPrioridad] = useState<MunicipalPriority | undefined>(
     initialPriority,
@@ -34,6 +39,10 @@ export function MunicipalEntry({
   const [isPending, startTransition] = useTransition();
   const selected = options.find((option) => option.slug === ambito);
   const validAmbitos = new Set(options.map((option) => option.slug));
+
+  useEffect(() => {
+    if (error || autoFocus) ambitoRef.current?.focus();
+  }, [autoFocus, error]);
 
   function handleAmbitoChange(nextAmbito: string) {
     setAmbito(nextAmbito);
@@ -44,12 +53,18 @@ export function MunicipalEntry({
     setAmbito("");
     setPrioridad(undefined);
     setValidationError(null);
+    if (resetHref) {
+      router.push(resetHref);
+      return;
+    }
+    ambitoRef.current?.focus();
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selected) {
       setValidationError("Selecciona una municipalidad para continuar.");
+      ambitoRef.current?.focus();
       return;
     }
     const selection = { ambito, prioridad };
@@ -115,9 +130,10 @@ export function MunicipalEntry({
             </label>
             <select
               id="municipal-entry-ambito"
+              ref={ambitoRef}
               value={ambito}
               onChange={(event) => handleAmbitoChange(event.target.value)}
-              aria-describedby="municipal-entry-ambito-help"
+              aria-describedby={validationError ? "municipal-entry-ambito-help municipal-entry-status" : "municipal-entry-ambito-help"}
               aria-invalid={validationError ? true : undefined}
               className="min-h-12 w-full min-w-0 rounded-xl border border-gray-600 bg-gray-950 px-3 py-3 text-base text-white focus:border-red-400"
             >
@@ -192,7 +208,7 @@ export function MunicipalEntry({
             Limpiar selección
           </button>
         </div>
-        <p aria-live="polite" className="mt-3 min-h-5 text-sm font-semibold text-amber-300">
+        <p id="municipal-entry-status" aria-live="polite" className="mt-3 min-h-5 text-sm font-semibold text-amber-300">
           {validationError ?? (isPending ? "Cargando la municipalidad seleccionada." : "")}
         </p>
       </form>

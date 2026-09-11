@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { FaqAccordion } from "@/components/FaqAccordion";
-import { CANDIDATOS_MUNICIPALES, distritosConCandidatos } from "@/lib/municipales";
+import { MunicipalEntry } from "@/components/MunicipalEntry";
+import { CANDIDATOS_MUNICIPALES, distritosConCandidatos, obtenerOpcionesMunicipales } from "@/lib/municipales";
 import { METADATA_PLANES } from "@/lib/planes-gobierno";
 
 // El cron invalida estas rutas con revalidatePath cuando el scraping trae algo
@@ -108,6 +109,10 @@ export default async function Home() {
               <p className="text-2xl sm:text-3xl font-black text-white">{stats.noticias.toLocaleString()}</p>
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mt-0.5">Noticias</p>
             </div>
+          </div>
+
+          <div className="mx-auto mt-8 max-w-4xl text-left">
+            <MunicipalEntry options={obtenerOpcionesMunicipales()} />
           </div>
 
           {/* CTA Cards */}

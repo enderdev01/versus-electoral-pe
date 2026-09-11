@@ -4,19 +4,41 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
   CandidateSelect,
+  ComparisonPanels,
   createRequestGeneration,
   rosterContentKey,
+  resolveNewsResponse,
+  resolvePlanResponse,
   resolveEligibility,
   resolveEligibilityResponse,
   type MunicipalCandidate,
   viewReducer,
 } from "../src/components/MunicipalComparison";
+import type { PlanGobiernoView } from "../src/lib/planes-gobierno";
 
 const roster = ["ana", "beatriz"];
 const candidates: MunicipalCandidate[] = [
   { id: 1, nombre: "Beatriz Pérez", partido: "Partido B", slug: "beatriz" },
   { id: 2, nombre: "Ana López", partido: "Partido A", slug: "ana" },
 ];
+
+const plan: PlanGobiernoView = {
+  jneId: 12,
+  expediente: "EXP-12",
+  fuenteUrl: "https://plataformahistorico.jne.gob.pe/",
+  pdfUrl: null,
+  fechaRegistro: null,
+  fechaResumen: null,
+  propuestas: [{
+    jneId: 1,
+    dimension: "SOCIAL",
+    problema: "Texto original del problema",
+    objetivo: "Texto original de la propuesta",
+    indicador: null,
+    meta: null,
+    orden: 1,
+  }],
+};
 
 test("eligibility distinguishes zero roster, unavailable database coverage, and malformed responses", () => {
   assert.deepEqual(resolveEligibility([], candidates), { status: "empty" });
@@ -50,7 +72,7 @@ test("the ready state keeps native, distinct candidate controls and neutral muni
   assert.equal(ready.status, "ready");
 
   const state = viewReducer(
-    { eligibility: ready, left: "", right: "", retry: 0 },
+    { eligibility: ready, left: "", right: "", retry: 0, results: null },
     { type: "left", value: "ana" },
   );
   const distinctState = viewReducer(state, { type: "right", value: "ana" });
@@ -76,4 +98,32 @@ test("the ready state keeps native, distinct candidate controls and neutral muni
   assert.match(markup, /value="beatriz" disabled/);
   assert.match(markup, /value="ana" disabled/);
   assert.doesNotMatch(markup, /ganador|peligroso|veredicto|medidor/i);
+});
+
+test("official plans stay primary, preserve JNE wording, and open the optional priority without ranking", () => {
+  const markup = renderToStaticMarkup(
+    createElement(ComparisonPanels, {
+      left: candidates[1],
+      right: candidates[0],
+      priority: "SOCIAL",
+      results: {
+        plans: { left: { status: "ready", data: plan }, right: { status: "unavailable" } },
+        news: { left: { status: "ready", data: [{ id: 1, titulo: "Noticia A", fuente: "Medio", url: "https://example.com/a", fechaNoticia: "2026-01-02" }] }, right: { status: "ready", data: [] } },
+      },
+    }),
+  );
+
+  assert.ok(markup.indexOf("Propuestas oficiales") < markup.indexOf("Noticias relacionadas"));
+  assert.match(markup, /Texto original del problema/);
+  assert.match(markup, /Texto original de la propuesta/);
+  assert.match(markup, /<details open=""/);
+  assert.match(markup, /plataformahistorico\.jne\.gob\.pe/);
+  assert.doesNotMatch(markup, /ganador|peligroso|veredicto|medidor|puntaje/i);
+});
+
+test("plan and news sources retain asymmetric unavailable and empty states", () => {
+  assert.deepEqual(resolvePlanResponse({ ok: true, body: { plan: null } }), { status: "unavailable" });
+  assert.deepEqual(resolvePlanResponse({ ok: false, body: {} }), { status: "unavailable" });
+  assert.deepEqual(resolveNewsResponse({ ok: true, body: { noticias: [] } }), { status: "ready", data: [] });
+  assert.deepEqual(resolveNewsResponse({ ok: false, body: {} }), { status: "unavailable" });
 });

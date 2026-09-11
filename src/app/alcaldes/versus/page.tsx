@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { MunicipalEntry } from "@/components/MunicipalEntry";
 import { VersusMunicipal } from "@/components/VersusMunicipal";
-import { SinDatosEleccion } from "@/components/SinDatosEleccion";
-import { CANDIDATOS_MUNICIPALES } from "@/lib/municipales";
+import { candidatosPorAmbito, obtenerOpcionesMunicipales } from "@/lib/municipales";
+import { parseMunicipalComparisonQuery } from "@/lib/municipal-entry";
 
 export const metadata: Metadata = {
-  title: "Versus — Compara Candidatos a Alcalde",
+  title: "Compara candidaturas municipales",
   description:
-    "Compara cara a cara a los candidatos a la alcaldía de Lima y sus distritos en las municipales 2026. Descubre quién tiene más denuncias, acusaciones y sentencias.",
+    "Elige una municipalidad para contrastar candidaturas, propuestas oficiales del JNE y noticias como contexto.",
   alternates: {
     canonical: `${SITE_URL}/alcaldes/versus`,
     languages: {
@@ -16,22 +17,47 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `Versus de Candidatos a Alcalde | ${SITE_NAME}`,
-    description:
-      "Compara cara a cara a los candidatos a alcalde en las elecciones municipales 2026.",
+    title: `Comparación municipal | ${SITE_NAME}`,
+    description: "Contrasta candidaturas y propuestas oficiales de una municipalidad.",
     url: `${SITE_URL}/alcaldes/versus`,
   },
 };
 
-export default function AlcaldesVersusPage() {
-  if (CANDIDATOS_MUNICIPALES.length === 0) {
+type SearchParams = Promise<{ ambito?: string | string[]; prioridad?: string | string[] }>;
+
+export default async function AlcaldesVersusPage({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
+  const options = obtenerOpcionesMunicipales();
+  const query = parseMunicipalComparisonQuery(
+    await searchParams,
+    new Set(options.map((option) => option.slug)),
+  );
+
+  if (query.status !== "valid") {
     return (
-      <div className="min-h-screen bg-gray-950 px-4 py-16">
-        <div className="mx-auto max-w-2xl">
-          <h1 className="mb-6 text-center text-2xl font-black uppercase tracking-wider text-white">
-            Versus municipal 2026
-          </h1>
-          <SinDatosEleccion detalle="El versus de alcaldes se activa apenas carguemos las listas inscritas del JNE para las municipales 2026." />
+      <div className="min-h-screen bg-gray-950 px-4 py-8 sm:py-12">
+        <div className="mx-auto max-w-4xl">
+          <MunicipalEntry
+            autoFocus={query.status === "invalid"}
+            error={query.status === "invalid" ? query.message : undefined}
+            options={options}
+            resetHref="/alcaldes/versus"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  const option = options.find((item) => item.slug === query.ambito);
+  if (!option) {
+    // Defensive: keep the public route recoverable if the source catalog changes.
+    return (
+      <div className="min-h-screen bg-gray-950 px-4 py-8 sm:py-12">
+        <div className="mx-auto max-w-4xl">
+          <MunicipalEntry error="La municipalidad indicada ya no está disponible." options={options} resetHref="/alcaldes/versus" />
         </div>
       </div>
     );
@@ -39,7 +65,15 @@ export default function AlcaldesVersusPage() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <VersusMunicipal />
+      <VersusMunicipal
+        key={query.ambito}
+        ambito={query.ambito}
+        municipalityName={option.nombre}
+        rosterSlugs={candidatosPorAmbito(query.ambito).map((candidate) => candidate.slug)}
+        options={options}
+        priority={query.prioridad}
+        notice={query.notice}
+      />
     </div>
   );
 }
