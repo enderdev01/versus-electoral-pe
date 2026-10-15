@@ -1,5 +1,5 @@
 {
-  "actualizado": "1:06 p. m.",
+  "actualizado": "1:40 p. m.",
   "ambitos": {
     "lima-metropolitana": {
       "actasPct": 94.444,
@@ -1261,12 +1261,12 @@
       ]
     },
     "la-molina": {
-      "actasPct": 99.477,
+      "actasPct": 99.652,
       "actas": {
-        "contabilizadas": 571,
+        "contabilizadas": 572,
         "total": 574
       },
-      "votosValidos": 119020,
+      "votosValidos": 119186,
       "filas": [
         {
           "nombre": "EDWIN ANIBAL MENDOZA RAMIREZ",
@@ -1277,68 +1277,68 @@
         {
           "nombre": "MEISY BLANCA ROSA NUÑEZ RUIZ",
           "partido": "PARTIDO POPULAR CRISTIANO - PPC",
-          "porcentaje": 1.038,
-          "votos": 1235
+          "porcentaje": 1.039,
+          "votos": 1238
         },
         {
           "nombre": "JOSE MIGUEL RODRIGUEZ TASAYCO",
           "partido": "PROGRESEMOS",
           "porcentaje": 1.065,
-          "votos": 1267
+          "votos": 1269
         },
         {
           "nombre": "MARIA - PIA PAZ DE LA BARRA FREIGEIRO",
           "partido": "FE EN EL PERÚ",
-          "porcentaje": 1.093,
-          "votos": 1301
+          "porcentaje": 1.094,
+          "votos": 1304
         },
         {
           "nombre": "CRISTOPHER ELDIN CLEMENTE PEREZ",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 1.367,
-          "votos": 1627
+          "porcentaje": 1.368,
+          "votos": 1630
         },
         {
           "nombre": "FLOR DE MARIA TADEO ROMERO",
           "partido": "AHORA NACIÓN - AN",
-          "porcentaje": 3.279,
-          "votos": 3903
+          "porcentaje": 3.276,
+          "votos": 3905
         },
         {
           "nombre": "EDMUNDO DEL AGUILA HERRERA",
           "partido": "ACCIÓN POPULAR",
-          "porcentaje": 4.661,
-          "votos": 5547
+          "porcentaje": 4.659,
+          "votos": 5553
         },
         {
           "nombre": "MARIA PERLA ESPINOZA AQUINO",
           "partido": "ALIANZA PARA EL PROGRESO",
           "porcentaje": 4.715,
-          "votos": 5612
+          "votos": 5620
         },
         {
           "nombre": "JULIO ADOLFO TOVAR URIBE",
           "partido": "PARTIDO POLÍTICO ADP",
-          "porcentaje": 6.318,
-          "votos": 7520
+          "porcentaje": 6.315,
+          "votos": 7527
         },
         {
           "nombre": "LIZZI DEL ROCIO SUELDO MATOS",
           "partido": "RENOVACIÓN POPULAR PERÚ",
-          "porcentaje": 15.58,
-          "votos": 18543
+          "porcentaje": 15.583,
+          "votos": 18573
         },
         {
           "nombre": "SERGIO JOAN CASTROMONTE CHAPARRO",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
-          "porcentaje": 24.248,
-          "votos": 28860
+          "porcentaje": 24.244,
+          "votos": 28896
         },
         {
           "nombre": "JUAN CARLOS MARTIN ZUREK PARDO FIGUEROA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 36.322,
-          "votos": 43230
+          "porcentaje": 36.326,
+          "votos": 43296
         }
       ]
     },
