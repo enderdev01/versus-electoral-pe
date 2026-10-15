@@ -1,13 +1,13 @@
 {
-  "actualizado": "9:06 a. m.",
+  "actualizado": "10:06 a. m.",
   "ambitos": {
     "lima-metropolitana": {
-      "actasPct": 94.387,
+      "actasPct": 94.406,
       "actas": {
-        "contabilizadas": 24872,
+        "contabilizadas": 24877,
         "total": 26351
       },
-      "votosValidos": 5305274,
+      "votosValidos": 5306378,
       "filas": [
         {
           "nombre": "SAMIR FRANK QUISPE CABALLERO",
@@ -42,44 +42,44 @@
         {
           "nombre": "SANDRO CALLER GUTIERREZ",
           "partido": "PARTIDO PATRIÓTICO DEL PERÚ",
-          "porcentaje": 0.182,
+          "porcentaje": 0.181,
           "votos": 9631
         },
         {
           "nombre": "JUAN CARLOS ALVARADO MESTANZA",
           "partido": "ALIANZA ELECTORAL VENCEREMOS",
           "porcentaje": 0.184,
-          "votos": 9764
+          "votos": 9767
         },
         {
           "nombre": "PARTIDO POLÍTICO NACIONAL PERÚ LIBRE",
           "partido": "PARTIDO POLÍTICO NACIONAL PERÚ LIBRE",
           "porcentaje": 0.27,
-          "votos": 14301
+          "votos": 14302
         },
         {
           "nombre": "VICTORIA BETZABE LA CRUZ GARCES",
           "partido": "PARTIDO MORADO",
           "porcentaje": 0.304,
-          "votos": 16136
+          "votos": 16143
         },
         {
           "nombre": "FLOR DE MARIA HURTADO VALDEZ",
           "partido": "PARTIDO DEMÓCRATA VERDE",
           "porcentaje": 0.375,
-          "votos": 19904
+          "votos": 19913
         },
         {
           "nombre": "EDGARDO RENAN DE POMAR VIZCARRA",
           "partido": "PARTIDO POPULAR CRISTIANO - PPC",
-          "porcentaje": 0.468,
-          "votos": 24803
+          "porcentaje": 0.467,
+          "votos": 24805
         },
         {
           "nombre": "MONICA YADIRA YAYA LUYO",
           "partido": "PARTIDO APRISTA PERUANO",
           "porcentaje": 0.503,
-          "votos": 26691
+          "votos": 26698
         },
         {
           "nombre": "CARLOS FRANCISCO GALLARDO NEYRA",
@@ -91,80 +91,80 @@
           "nombre": "ELIZABETH MARIA DEL ROSARIO LEON CHINCHAY",
           "partido": "PARTIDO FRENTE DE LA ESPERANZA 2021",
           "porcentaje": 0.73,
-          "votos": 38755
+          "votos": 38756
         },
         {
           "nombre": "LUIS MIGUEL LLANOS CARRILLO",
           "partido": "PROGRESEMOS",
           "porcentaje": 0.895,
-          "votos": 47480
+          "votos": 47505
         },
         {
           "nombre": "SEGUNDO VALDEZ ZAVALA",
           "partido": "FRENTE POPULAR AGRÍCOLA FÍA DEL PERÚ",
-          "porcentaje": 0.915,
-          "votos": 48567
+          "porcentaje": 0.916,
+          "votos": 48580
         },
         {
           "nombre": "RICARDO PABLO BELMONT CASSINELLI",
           "partido": "PARTIDO CÍVICO OBRAS",
           "porcentaje": 1.592,
-          "votos": 84468
+          "votos": 84477
         },
         {
           "nombre": "OSWALDO HERNAN VARGAS CUELLAR",
           "partido": "JUNTOS POR EL PERÚ",
           "porcentaje": 1.87,
-          "votos": 99215
+          "votos": 99234
         },
         {
           "nombre": "CARLOS ALBERTO TEJADA NORIEGA",
           "partido": "ACCIÓN POPULAR",
-          "porcentaje": 2.418,
-          "votos": 128267
+          "porcentaje": 2.419,
+          "votos": 128341
         },
         {
           "nombre": "SAMUEL MARCOS DAZA TAYPE",
           "partido": "FUERZA POPULAR",
-          "porcentaje": 2.61,
-          "votos": 138465
+          "porcentaje": 2.611,
+          "votos": 138528
         },
         {
           "nombre": "SUSEL ANA MARIA PAREDES PIQUE",
           "partido": "AHORA NACIÓN - AN",
           "porcentaje": 3.554,
-          "votos": 188562
+          "votos": 188589
         },
         {
           "nombre": "ELIO FERNANDO RIERA GARRO",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 4.3,
-          "votos": 228110
+          "porcentaje": 4.301,
+          "votos": 228201
         },
         {
           "nombre": "DANIEL BELIZARIO URRESTI ELERA",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 7.958,
-          "votos": 422191
+          "porcentaje": 7.957,
+          "votos": 422244
         },
         {
           "nombre": "CARLOS RICARDO BRUCE MONTES DE OCA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 15.198,
-          "votos": 806286
+          "porcentaje": 15.199,
+          "votos": 806499
         },
         {
           "nombre": "FRANCIS JAMES ALLISON OYAGUE",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
-          "porcentaje": 26.792,
-          "votos": 1421364
+          "porcentaje": 26.79,
+          "votos": 1421558
         },
         {
           "nombre": "Rafael López Aliaga",
           "foto": "rafael-lopez-aliaga",
           "partido": "RENOVACIÓN POPULAR PERÚ",
           "porcentaje": 27.789,
-          "votos": 1474273
+          "votos": 1474566
         }
       ]
     },
@@ -733,102 +733,102 @@
       ]
     },
     "chorrillos": {
-      "actasPct": 97.442,
+      "actasPct": 98.22,
       "actas": {
-        "contabilizadas": 876,
+        "contabilizadas": 883,
         "total": 899
       },
-      "votosValidos": 187685,
+      "votosValidos": 189192,
       "filas": [
         {
           "nombre": "JORGE LUIS CHICATA MORENO",
           "partido": "PARTIDO POLÍTICO PERÚ PRIMERO",
-          "porcentaje": 0.293,
-          "votos": 550
+          "porcentaje": 0.292,
+          "votos": 552
         },
         {
           "nombre": "LUCIANO TUÑOQUE MORI",
           "partido": "PARTIDO DEMÓCRATA UNIDO PERÚ",
-          "porcentaje": 0.527,
-          "votos": 989
+          "porcentaje": 0.524,
+          "votos": 992
         },
         {
           "nombre": "PARTIDO POPULAR CRISTIANO - PPC",
           "partido": "PARTIDO POPULAR CRISTIANO - PPC",
-          "porcentaje": 0.589,
-          "votos": 1105
+          "porcentaje": 0.586,
+          "votos": 1109
         },
         {
           "nombre": "GIULIANO FABRIZIO BACIGALUPO PADILLA",
           "partido": "PARTIDO APRISTA PERUANO",
-          "porcentaje": 0.668,
-          "votos": 1254
+          "porcentaje": 0.667,
+          "votos": 1261
         },
         {
           "nombre": "JOSIAN TATIANA CALMET LEON",
           "partido": "JUNTOS POR EL PERÚ",
-          "porcentaje": 2.384,
-          "votos": 4475
+          "porcentaje": 2.383,
+          "votos": 4508
         },
         {
           "nombre": "JORGE IGNACIO GUZMAN NIÑO",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 2.527,
-          "votos": 4742
+          "porcentaje": 2.531,
+          "votos": 4788
         },
         {
           "nombre": "RICARDO HERMINIO BEJARANO FERNANDEZ",
           "partido": "FE EN EL PERÚ",
-          "porcentaje": 2.743,
-          "votos": 5149
+          "porcentaje": 2.728,
+          "votos": 5162
         },
         {
           "nombre": "DIONISIO NAVARRO DE LA O",
           "partido": "PROGRESEMOS",
-          "porcentaje": 2.904,
-          "votos": 5451
+          "porcentaje": 2.902,
+          "votos": 5491
         },
         {
           "nombre": "KRUGER KELVIN VIDAL QUISPE",
           "partido": "PARTIDO MORADO",
-          "porcentaje": 3.07,
-          "votos": 5761
+          "porcentaje": 3.067,
+          "votos": 5802
         },
         {
           "nombre": "MARIA DEL ROSARIO NEYRA ONOFRE",
           "partido": "FUERZA POPULAR",
-          "porcentaje": 9.318,
-          "votos": 17489
+          "porcentaje": 9.329,
+          "votos": 17650
         },
         {
           "nombre": "LUIS ALBERTO JIMENEZ CAICHIHUA",
           "partido": "ACCIÓN POPULAR",
-          "porcentaje": 10.019,
-          "votos": 18804
+          "porcentaje": 9.997,
+          "votos": 18914
         },
         {
           "nombre": "HENRY HERNAN HERRERA ALEMAN",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 12.867,
-          "votos": 24149
+          "porcentaje": 12.868,
+          "votos": 24346
         },
         {
           "nombre": "RICHARD CORTEZ MELGAREJO",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
-          "porcentaje": 13.571,
-          "votos": 25471
+          "porcentaje": 13.567,
+          "votos": 25668
         },
         {
           "nombre": "RICARDO SANTIAGO VASQUEZ LAGUNA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 16.5,
-          "votos": 30968
+          "porcentaje": 16.519,
+          "votos": 31253
         },
         {
           "nombre": "ROBERTO CARLOS PIZARRO LOPEZ",
           "partido": "RENOVACIÓN POPULAR PERÚ",
-          "porcentaje": 22.02,
-          "votos": 41328
+          "porcentaje": 22.039,
+          "votos": 41696
         }
       ]
     },
