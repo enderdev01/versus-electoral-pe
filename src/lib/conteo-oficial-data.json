@@ -1,13 +1,13 @@
 {
-  "actualizado": "3:00 p. m.",
+  "actualizado": "4:00 p. m.",
   "ambitos": {
     "lima-metropolitana": {
-      "actasPct": 95.051,
+      "actasPct": 95.055,
       "actas": {
-        "contabilizadas": 25047,
+        "contabilizadas": 25048,
         "total": 26351
       },
-      "votosValidos": 5341819,
+      "votosValidos": 5342068,
       "filas": [
         {
           "nombre": "SAMIR FRANK QUISPE CABALLERO",
@@ -19,7 +19,7 @@
           "nombre": "LUIS ALBERTO HUETTE TOLENTINO",
           "partido": "PARTIDO POLÍTICO PUEBLO CONSCIENTE",
           "porcentaje": 0.07,
-          "votos": 3761
+          "votos": 3762
         },
         {
           "nombre": "RUBEN DANIEL BONILLA ESPINOZA",
@@ -61,13 +61,13 @@
           "nombre": "VICTORIA BETZABE LA CRUZ GARCES",
           "partido": "PARTIDO MORADO",
           "porcentaje": 0.304,
-          "votos": 16232
+          "votos": 16234
         },
         {
           "nombre": "FLOR DE MARIA HURTADO VALDEZ",
           "partido": "PARTIDO DEMÓCRATA VERDE",
           "porcentaje": 0.375,
-          "votos": 20033
+          "votos": 20035
         },
         {
           "nombre": "EDGARDO RENAN DE POMAR VIZCARRA",
@@ -85,19 +85,19 @@
           "nombre": "CARLOS FRANCISCO GALLARDO NEYRA",
           "partido": "PARTIDO DEL BUEN GOBIERNO",
           "porcentaje": 0.661,
-          "votos": 35297
+          "votos": 35298
         },
         {
           "nombre": "ELIZABETH MARIA DEL ROSARIO LEON CHINCHAY",
           "partido": "PARTIDO FRENTE DE LA ESPERANZA 2021",
           "porcentaje": 0.729,
-          "votos": 38926
+          "votos": 38928
         },
         {
           "nombre": "LUIS MIGUEL LLANOS CARRILLO",
           "partido": "PROGRESEMOS",
           "porcentaje": 0.896,
-          "votos": 47845
+          "votos": 47847
         },
         {
           "nombre": "SEGUNDO VALDEZ ZAVALA",
@@ -109,62 +109,62 @@
           "nombre": "RICARDO PABLO BELMONT CASSINELLI",
           "partido": "PARTIDO CÍVICO OBRAS",
           "porcentaje": 1.591,
-          "votos": 84968
+          "votos": 84974
         },
         {
           "nombre": "OSWALDO HERNAN VARGAS CUELLAR",
           "partido": "JUNTOS POR EL PERÚ",
           "porcentaje": 1.869,
-          "votos": 99840
+          "votos": 99848
         },
         {
           "nombre": "CARLOS ALBERTO TEJADA NORIEGA",
           "partido": "ACCIÓN POPULAR",
           "porcentaje": 2.417,
-          "votos": 129116
+          "votos": 129121
         },
         {
           "nombre": "SAMUEL MARCOS DAZA TAYPE",
           "partido": "FUERZA POPULAR",
           "porcentaje": 2.611,
-          "votos": 139487
+          "votos": 139489
         },
         {
           "nombre": "SUSEL ANA MARIA PAREDES PIQUE",
           "partido": "AHORA NACIÓN - AN",
           "porcentaje": 3.556,
-          "votos": 189978
+          "votos": 189986
         },
         {
           "nombre": "ELIO FERNANDO RIERA GARRO",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 4.291,
-          "votos": 229197
+          "porcentaje": 4.29,
+          "votos": 229201
         },
         {
           "nombre": "DANIEL BELIZARIO URRESTI ELERA",
           "partido": "PODEMOS PERÚ",
           "porcentaje": 7.957,
-          "votos": 425042
+          "votos": 425079
         },
         {
           "nombre": "CARLOS RICARDO BRUCE MONTES DE OCA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 15.176,
-          "votos": 810666
+          "porcentaje": 15.175,
+          "votos": 810684
         },
         {
           "nombre": "FRANCIS JAMES ALLISON OYAGUE",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
           "porcentaje": 26.836,
-          "votos": 1433513
+          "votos": 1433604
         },
         {
           "nombre": "Rafael López Aliaga",
           "foto": "rafael-lopez-aliaga",
           "partido": "RENOVACIÓN POPULAR PERÚ",
           "porcentaje": 27.773,
-          "votos": 1483609
+          "votos": 1483669
         }
       ]
     },
