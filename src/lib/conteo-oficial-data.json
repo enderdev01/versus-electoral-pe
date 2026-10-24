@@ -1,5 +1,5 @@
 {
-  "actualizado": "11:55 a. m.",
+  "actualizado": "12:55 p. m.",
   "ambitos": {
     "lima-metropolitana": {
       "actasPct": 98.319,
@@ -2635,12 +2635,12 @@
       ]
     },
     "san-juan-de-lurigancho": {
-      "actasPct": 93.555,
+      "actasPct": 93.592,
       "actas": {
-        "contabilizadas": 2555,
+        "contabilizadas": 2556,
         "total": 2731
       },
-      "votosValidos": 541408,
+      "votosValidos": 541663,
       "filas": [
         {
           "nombre": "WALTER JACOBO GUTIERREZ VAISMAN",
@@ -2657,14 +2657,14 @@
         {
           "nombre": "ARMENGOL SANCHEZ SANDOVAL",
           "partido": "PARTIDO POLÍTICO PRIN",
-          "porcentaje": 0.19,
+          "porcentaje": 0.189,
           "votos": 1026
         },
         {
           "nombre": "SABINA ALARCON SOLIS",
           "partido": "ALIANZA REGIONAL POR EL PERÚ",
           "porcentaje": 0.209,
-          "votos": 1130
+          "votos": 1131
         },
         {
           "nombre": "ADAN RENEE COBEÑA GOMEZ",
@@ -2676,13 +2676,13 @@
           "nombre": "HEISEN ODORICO HERRERA CONOPUMA",
           "partido": "ALIANZA ELECTORAL VENCEREMOS",
           "porcentaje": 0.266,
-          "votos": 1442
+          "votos": 1443
         },
         {
           "nombre": "PARTIDO SICREO",
           "partido": "PARTIDO SICREO",
-          "porcentaje": 0.314,
-          "votos": 1701
+          "porcentaje": 0.317,
+          "votos": 1715
         },
         {
           "nombre": "PARTIDO POPULAR CRISTIANO - PPC",
@@ -2694,13 +2694,13 @@
           "nombre": "ALEX GONZALES CASTILLO",
           "partido": "PARTIDO DEMÓCRATA VERDE",
           "porcentaje": 0.929,
-          "votos": 5030
+          "votos": 5033
         },
         {
           "nombre": "MIGUEL OSWALDO HUACRE MENDEZ",
           "partido": "PARTIDO PAÍS PARA TODOS",
-          "porcentaje": 1.046,
-          "votos": 5661
+          "porcentaje": 1.045,
+          "votos": 5663
         },
         {
           "nombre": "CARLOS JAIME DE LA TORRE MENDOZA",
@@ -2712,61 +2712,61 @@
           "nombre": "EDWIN MEJIA CERDAN",
           "partido": "PARTIDO CÍVICO OBRAS",
           "porcentaje": 1.371,
-          "votos": 7420
+          "votos": 7424
         },
         {
           "nombre": "ANTONIO FLORES CACERES",
           "partido": "FRENTE POPULAR AGRÍCOLA FÍA DEL PERÚ",
           "porcentaje": 1.636,
-          "votos": 8857
+          "votos": 8860
         },
         {
           "nombre": "LUIS GINO BLANCO ALDAMA",
           "partido": "ACCIÓN POPULAR",
           "porcentaje": 1.763,
-          "votos": 9543
+          "votos": 9548
         },
         {
           "nombre": "ELSA VIRGINIA ALARCON SUAREZ",
           "partido": "AHORA NACIÓN - AN",
           "porcentaje": 1.939,
-          "votos": 10499
+          "votos": 10501
         },
         {
           "nombre": "JUNTOS POR EL PERÚ",
           "partido": "JUNTOS POR EL PERÚ",
           "porcentaje": 2.593,
-          "votos": 14039
+          "votos": 14045
         },
         {
           "nombre": "JOSE LUIS LUNA MORALES",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 9.5,
-          "votos": 51432
+          "porcentaje": 9.499,
+          "votos": 51451
         },
         {
           "nombre": "AMERICO ZEGARRA ACUÑA",
           "partido": "RENOVACIÓN POPULAR PERÚ",
-          "porcentaje": 9.872,
-          "votos": 53448
+          "porcentaje": 9.868,
+          "votos": 53453
         },
         {
           "nombre": "JUAN VALENTIN NAVARRO JIMENEZ",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 10.217,
-          "votos": 55318
+          "porcentaje": 10.216,
+          "votos": 55338
         },
         {
           "nombre": "HECTOR JOAQUIN ALEJANDRO BUSTAMANTE",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
           "porcentaje": 10.394,
-          "votos": 56276
+          "votos": 56298
         },
         {
           "nombre": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 45.765,
-          "votos": 247777
+          "porcentaje": 45.771,
+          "votos": 247925
         }
       ]
     },
