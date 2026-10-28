@@ -1,5 +1,5 @@
 {
-  "actualizado": "4:40 p. m.",
+  "actualizado": "5:40 p. m.",
   "ambitos": {
     "lima-metropolitana": {
       "actasPct": 99.624,
@@ -3591,12 +3591,12 @@
       ]
     },
     "villa-maria-del-triunfo": {
-      "actasPct": 99.595,
+      "actasPct": 99.676,
       "actas": {
-        "contabilizadas": 1229,
+        "contabilizadas": 1230,
         "total": 1234
       },
-      "votosValidos": 261338,
+      "votosValidos": 261544,
       "filas": [
         {
           "nombre": "DANIEL FERNANDEZ NUÑEZ",
@@ -3620,97 +3620,97 @@
           "nombre": "PARTIDO FRENTE DE LA ESPERANZA 2021",
           "partido": "PARTIDO FRENTE DE LA ESPERANZA 2021",
           "porcentaje": 0.969,
-          "votos": 2532
+          "votos": 2535
         },
         {
           "nombre": "JUAN CARLOS MEDINA MORILLO",
           "partido": "PARTIDO PAÍS PARA TODOS",
           "porcentaje": 1.114,
-          "votos": 2911
+          "votos": 2914
         },
         {
           "nombre": "CRESENCIO GONZALES CCAPCHA",
           "partido": "PARTIDO POPULAR CRISTIANO - PPC",
           "porcentaje": 1.152,
-          "votos": 3011
+          "votos": 3014
         },
         {
           "nombre": "JUAN JOSE CASTILLO ANGELES",
           "partido": "PARTIDO CÍVICO OBRAS",
           "porcentaje": 1.353,
-          "votos": 3537
+          "votos": 3539
         },
         {
           "nombre": "ROGER EDINSSON PARRA TABOADA",
           "partido": "ACCIÓN POPULAR",
           "porcentaje": 1.393,
-          "votos": 3641
+          "votos": 3643
         },
         {
           "nombre": "EDGARD FREDDY PAUCAR CALERO",
           "partido": "PERÚ MODERNO",
           "porcentaje": 1.44,
-          "votos": 3762
+          "votos": 3765
         },
         {
           "nombre": "CARLOS ARMÁNDO CHÁVEZ MONTOYA",
           "partido": "PARTIDO POLÍTICO PERÚ PRIMERO",
           "porcentaje": 1.469,
-          "votos": 3840
+          "votos": 3842
         },
         {
           "nombre": "VICTOR TITO SOTOMAYOR BERNAOLA",
           "partido": "PROGRESEMOS",
-          "porcentaje": 1.733,
-          "votos": 4529
+          "porcentaje": 1.734,
+          "votos": 4534
         },
         {
           "nombre": "FRANKLIN VILLARRUEL ALVAREZ",
           "partido": "FRENTE POPULAR AGRÍCOLA FÍA DEL PERÚ",
           "porcentaje": 2.148,
-          "votos": 5614
+          "votos": 5617
         },
         {
           "nombre": "RENE ALFREDO YUCRA VERASTEGUI",
           "partido": "JUNTOS POR EL PERÚ",
-          "porcentaje": 3.495,
-          "votos": 9134
+          "porcentaje": 3.494,
+          "votos": 9138
         },
         {
           "nombre": "VICTOR MANUEL CALDERON RODRIGUEZ",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 4.063,
-          "votos": 10617
+          "porcentaje": 4.062,
+          "votos": 10624
         },
         {
           "nombre": "CARLOS WALTER MEJIA ESCAJADILLO",
           "partido": "FUERZA POPULAR",
-          "porcentaje": 5.714,
-          "votos": 14932
+          "porcentaje": 5.712,
+          "votos": 14939
         },
         {
           "nombre": "CARLOS FRANCISCO HINOSTROZA RODRIGUEZ",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 6.837,
-          "votos": 17867
+          "porcentaje": 6.836,
+          "votos": 17879
         },
         {
           "nombre": "DAVID ANDRES MORALES CARDENAS",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
-          "porcentaje": 20.745,
-          "votos": 54215
+          "porcentaje": 20.746,
+          "votos": 54259
         },
         {
           "nombre": "GUIDO IÑIGO PERALTA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
-          "porcentaje": 22.679,
-          "votos": 59270
+          "porcentaje": 22.688,
+          "votos": 59338
         },
         {
           "nombre": "ROBERT JOEL LUDEÑA GUERRA",
           "partido": "RENOVACIÓN POPULAR PERÚ",
-          "porcentaje": 22.778,
-          "votos": 59528
+          "porcentaje": 22.775,
+          "votos": 59566
         }
       ]
     }
