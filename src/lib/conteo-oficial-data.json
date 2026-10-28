@@ -1,5 +1,5 @@
 {
-  "actualizado": "10:36 a. m.",
+  "actualizado": "11:36 a. m.",
   "ambitos": {
     "lima-metropolitana": {
       "actasPct": 99.499,
@@ -3467,126 +3467,126 @@
       ]
     },
     "villa-el-salvador": {
-      "actasPct": 99.915,
+      "actasPct": 100,
       "actas": {
-        "contabilizadas": 1170,
+        "contabilizadas": 1171,
         "total": 1171
       },
-      "votosValidos": 256120,
+      "votosValidos": 256348,
       "filas": [
         {
           "nombre": "SUGEY TATIANA BERNUY CUEVA",
           "partido": "PARTIDO POLÍTICO PRIN",
           "porcentaje": 0.179,
-          "votos": 459
+          "votos": 460
         },
         {
           "nombre": "EDGARD ASUNCIÓN CORDERO MARICHINI",
           "partido": "PARTIDO APRISTA PERUANO",
           "porcentaje": 0.377,
-          "votos": 965
+          "votos": 966
         },
         {
           "nombre": "PAUL DINO CARRASCO SALAZAR",
           "partido": "PARTIDO POPULAR CRISTIANO - PPC",
           "porcentaje": 0.389,
-          "votos": 996
+          "votos": 997
         },
         {
           "nombre": "MILTON TOMAS LLUQUE SOSA",
           "partido": "PARTIDO POLÍTICO PERÚ PRIMERO",
-          "porcentaje": 0.418,
-          "votos": 1071
+          "porcentaje": 0.419,
+          "votos": 1073
         },
         {
           "nombre": "LUCERO ECHEVARRIA QUISPE",
           "partido": "PARTIDO PATRIÓTICO DEL PERÚ",
           "porcentaje": 0.469,
-          "votos": 1201
+          "votos": 1202
         },
         {
           "nombre": "MIGMAN PINCHI CARO",
           "partido": "PARTIDO MORADO",
           "porcentaje": 0.791,
-          "votos": 2027
+          "votos": 2028
         },
         {
           "nombre": "PARTIDO FRENTE DE LA ESPERANZA 2021",
           "partido": "PARTIDO FRENTE DE LA ESPERANZA 2021",
-          "porcentaje": 0.993,
-          "votos": 2542
+          "porcentaje": 0.992,
+          "votos": 2544
         },
         {
           "nombre": "YOLANDA INES PEÑA VALDIVIA",
           "partido": "PARTIDO DEL BUEN GOBIERNO",
           "porcentaje": 1.078,
-          "votos": 2761
+          "votos": 2764
         },
         {
           "nombre": "NILS RENE ANTONIO SICCOS",
           "partido": "PARTIDO CÍVICO OBRAS",
-          "porcentaje": 1.108,
-          "votos": 2837
+          "porcentaje": 1.107,
+          "votos": 2839
         },
         {
           "nombre": "JUAN JOSE DIAZ AYQUIPA",
           "partido": "FRENTE POPULAR AGRÍCOLA FÍA DEL PERÚ",
-          "porcentaje": 1.827,
-          "votos": 4680
+          "porcentaje": 1.828,
+          "votos": 4686
         },
         {
           "nombre": "WILLIAM DWIGHT VARGAS MATOS",
           "partido": "JUNTOS POR EL PERÚ",
-          "porcentaje": 1.848,
-          "votos": 4732
+          "porcentaje": 1.847,
+          "votos": 4736
         },
         {
           "nombre": "GENARO SOTO MENDOZA",
           "partido": "AHORA NACIÓN - AN",
-          "porcentaje": 2.035,
-          "votos": 5213
+          "porcentaje": 2.037,
+          "votos": 5221
         },
         {
           "nombre": "WALTER QUISPE VILCAS",
           "partido": "PODEMOS PERÚ",
-          "porcentaje": 3.046,
-          "votos": 7802
+          "porcentaje": 3.047,
+          "votos": 7811
         },
         {
           "nombre": "RICARDO GIL ESPADIN",
           "partido": "FUERZA POPULAR",
-          "porcentaje": 3.273,
-          "votos": 8384
+          "porcentaje": 3.274,
+          "votos": 8392
         },
         {
           "nombre": "JOSE LUIS FLORES LLAUCA",
           "partido": "ACCIÓN POPULAR",
           "porcentaje": 3.778,
-          "votos": 9676
+          "votos": 9684
         },
         {
           "nombre": "ALBERTO LUIS PERALTA HUATUCO",
           "partido": "RENOVACIÓN POPULAR PERÚ",
-          "porcentaje": 8.969,
-          "votos": 22972
+          "porcentaje": 8.971,
+          "votos": 22997
         },
         {
           "nombre": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
           "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
           "porcentaje": 18.375,
-          "votos": 47061
+          "votos": 47103
         },
         {
           "nombre": "CLODOALDO KEVIN YÑIGO PERALTA",
           "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
           "porcentaje": 22.682,
-          "votos": 58094
+          "votos": 58145
         },
         {
           "nombre": "MARCELINO HUAMAN CANO",
           "partido": "ALIANZA PARA EL PROGRESO",
-          "porcentaje": 28.364,
-          "votos": 72647
+          "porcentaje": 28.36,
+          "votos": 72700
         }
       ]
     },
