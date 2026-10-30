@@ -5,39 +5,12 @@ import { pct, ResultRows } from "@/components/ExitPollResults";
 import type { ConteoAmbitoView, ConteoOficialView } from "@/lib/conteo-oficial";
 
 const PARAM = "distrito";
-const POLL_MS = 30_000;
 
 export function OfficialCount({ conteo: inicial }: { conteo: ConteoOficialView }) {
   const selectId = useId();
 
-  // The count committed with the last deploy renders first; /api/onpe/conteo
-  // then serves the copy synced every minute, refreshed every 30 s while visible.
-  const [conteo, setConteo] = useState(inicial);
-  useEffect(() => {
-    let cancelled = false;
-    const load = async () => {
-      if (document.visibilityState === "hidden") return;
-      try {
-        const res = await fetch("/api/onpe/conteo");
-        if (!res.ok) return;
-        const data = (await res.json()) as { conteo: ConteoOficialView | null };
-        if (!cancelled && data.conteo) setConteo(data.conteo);
-      } catch {
-        // Keep showing the last known count.
-      }
-    };
-    load();
-    const timer = setInterval(load, POLL_MS);
-    const onVisible = () => {
-      if (document.visibilityState === "visible") load();
-    };
-    document.addEventListener("visibilitychange", onVisible);
-    return () => {
-      cancelled = true;
-      clearInterval(timer);
-      document.removeEventListener("visibilitychange", onVisible);
-    };
-  }, []);
+  // The count is final: render the snapshot committed with the deploy, no polling.
+  const conteo = inicial;
 
   const [slug, setSlug] = useState(inicial.ambitos[0].slug);
 
