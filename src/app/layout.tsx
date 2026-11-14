@@ -4,7 +4,6 @@ import Link from "next/link";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 import { MunicipalBanner } from "@/components/MunicipalBanner";
 import { FooterApoyanos } from "@/components/FooterApoyanos";
-import { FooterVisitors } from "@/components/FooterVisitors";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { EleccionSwitch } from "@/components/EleccionSwitch";
 import { isProductionAnalyticsEnvironment } from "@/lib/analytics";
@@ -175,7 +174,6 @@ export default function RootLayout({
               <p className="text-[11px] text-gray-400 leading-relaxed max-w-xs">
                 Información de fuentes periodísticas públicas. Las clasificaciones son automáticas y no constituyen juicio legal.
               </p>
-              <FooterVisitors />
               <FooterApoyanos />
             </div>
 
@@ -197,7 +195,6 @@ export default function RootLayout({
                 <p className="mt-2 text-[11px] text-gray-400">
                   Actualización automática dos veces al día (00:00 y 12:00, hora Perú).
                 </p>
-                <FooterVisitors className="mt-2" />
               </div>
 
               {/* Col 2 - Navegación */}
