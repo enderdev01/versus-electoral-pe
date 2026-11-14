@@ -9,6 +9,8 @@
     "sync:onpe": "npx tsx --env-file-if-exists=.env scripts/sync-onpe.ts",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
     "check:isr": "npx tsx scripts/check-isr-budget.ts",
     "check:site-url": "npx tsx scripts/check-site-url.ts",
     "db:push": "npx prisma db push",
@@ -47,6 +49,7 @@
     "@types/three": "^0.184.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "playwright": "^1.65.1",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
