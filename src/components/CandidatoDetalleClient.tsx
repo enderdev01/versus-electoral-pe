@@ -121,7 +121,7 @@ export function CandidatoDetalleClient({
                 <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs sm:justify-start sm:text-sm">
                   <span className="font-bold uppercase tracking-wider text-red-500">Conteo ONPE</span>
                   <span className="font-bold tabular-nums text-white">
-                    {conteo.puesto}.º · {formatPct(conteo.porcentaje)}%
+                    {conteo.puesto === 1 ? "Ganador · " : `${conteo.puesto}.º · `}{formatPct(conteo.porcentaje)}%
                   </span>
                   <span className="text-gray-500">{formatPct(conteo.actasPct)}% de actas</span>
                 </p>

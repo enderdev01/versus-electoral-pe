@@ -71,6 +71,15 @@ export function OfficialCount({ conteo: inicial }: { conteo: ConteoOficialView }
 
       <ActasProgress ambito={ambito} />
 
+      {ambito.filas.length > 0 && (
+        <p className="mt-3 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-2 text-sm text-gray-200">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-red-400">Ganador según ONPE</span>
+          <br />
+          <span className="font-black text-white">{ambito.filas[0].nombre}</span>
+          {ambito.filas[0].partido ? ` · ${ambito.filas[0].partido}` : ""} · {pct(ambito.filas[0].porcentaje)}
+        </p>
+      )}
+
       {ambito.filas.length > 0 ? (
         <ResultRows filas={ambito.filas} />
       ) : (
