@@ -1,5 +1,5 @@
 // Where the plugin's Claude Code hooks are active. The plugin is installed for the whole user,
-// but its hooks only act on projects under ~/DEV plus any roots added with DEV_FACTORY_ROOTS,
+// but its hooks only act on projects under ~/DEV plus any roots added with SKUIZOPS_ROOTS,
 // a ":"-separated list of absolute paths. The variable adds roots, it never replaces ~/DEV.
 import { existsSync, readFileSync, realpathSync } from "node:fs";
 import { basename, delimiter, dirname, join, resolve, sep } from "node:path";
@@ -25,7 +25,7 @@ export const fold = (path) => real(resolve(path)).toLowerCase();
 export const under = (path, root) => path === root || path.startsWith(`${root}${sep}`);
 
 export function scopeRoots(env = process.env) {
-  const added = env.DEV_FACTORY_ROOTS?.split(delimiter).filter(Boolean) ?? [];
+  const added = env.SKUIZOPS_ROOTS?.split(delimiter).filter(Boolean) ?? [];
   return [...new Set([join(env.HOME ?? "", "DEV"), ...added].map((root) => resolve(root)))];
 }
 
@@ -38,7 +38,7 @@ export function inScope(dir, env = process.env) {
 // Projects the human trusts to run their own code from hooks (the verify gate and the linter).
 // The list lives outside every repo, so a cloned project cannot trust itself. One absolute path per line.
 export function trustFile(env = process.env) {
-  return join(env.HOME ?? "", ".config", "dev-factory", "trusted-projects");
+  return join(env.HOME ?? "", ".config", "skuizops", "trusted-projects");
 }
 
 // Exact match only, compared through symlinks: a trusted folder does not trust the projects inside it.
