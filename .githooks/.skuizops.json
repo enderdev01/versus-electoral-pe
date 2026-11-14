@@ -1,0 +1,12 @@
+{
+  "version": "0.15.0",
+  "files": {
+    ".githooks/commit-msg": "1ff165d1a9599bd66f046a6a63affeb0ae9b77c9d0c0046e83c974ff5e1f75f4",
+    ".githooks/pre-commit": "ff6ce33f4cbebf6664e1d2be9955cea01bb044df2f5657ed182c1fc6ef427ddd",
+    ".githooks/pre-merge-commit": "ff6ce33f4cbebf6664e1d2be9955cea01bb044df2f5657ed182c1fc6ef427ddd",
+    ".githooks/pre-push": "edab71a12efc96876c7f76e4092694141e82d86ed824104651c1be7ded465b61",
+    "scripts/guard/branch-guard.mjs": "23941152b4419416cbcbf754a816de95e084edb79b5a967603af56c066777270",
+    "scripts/guard/scope.mjs": "1deca1dd04f6fc71eeb970209fc72d78de264c8a546945a604ba235730e96ad6",
+    "scripts/guard/attribution-guard.mjs": "dda7c14e48cc8ff0edbaf3ebcfe8c64aa25b3a0b7d39f3d8a18f4d5a7952657c"
+  }
+}
